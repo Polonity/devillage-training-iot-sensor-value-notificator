@@ -1,0 +1,202 @@
+{
+  "source": {
+    "hash": "0xb2ef26e78e80e3b91dd35e0bc89d348912a80ff7eac0e1590fb482ef0068d3e8",
+    "language": "ink! 3.0.0-rc8",
+    "compiler": "rustc 1.60.0-nightly"
+  },
+  "contract": {
+    "name": "sensor_diag",
+    "version": "0.1.0",
+    "authors": [
+      "[your_name] <[your_email]>"
+    ]
+  },
+  "V3": {
+    "spec": {
+      "constructors": [
+        {
+          "args": [
+            {
+              "label": "init_value",
+              "type": {
+                "displayName": [
+                  "u32"
+                ],
+                "type": 0
+              }
+            },
+            {
+              "label": "init_alert",
+              "type": {
+                "displayName": [
+                  "bool"
+                ],
+                "type": 1
+              }
+            },
+            {
+              "label": "init_alert_count",
+              "type": {
+                "displayName": [
+                  "u64"
+                ],
+                "type": 2
+              }
+            }
+          ],
+          "docs": [
+            "Constructor that initializes the `bool` value to the given `init_value`."
+          ],
+          "label": "new",
+          "payable": true,
+          "selector": "0x9bae9d5e"
+        },
+        {
+          "args": [],
+          "docs": [
+            "Constructor that initializes the `bool` value to `false`.",
+            "",
+            "Constructors can delegate to other constructors."
+          ],
+          "label": "default",
+          "payable": true,
+          "selector": "0xed4b9d1b"
+        }
+      ],
+      "docs": [],
+      "events": [],
+      "messages": [
+        {
+          "args": [
+            {
+              "label": "value",
+              "type": {
+                "displayName": [
+                  "u32"
+                ],
+                "type": 0
+              }
+            }
+          ],
+          "docs": [
+            " A message that can be called on instantiated contracts.",
+            " This one flips the value of the stored `bool` from `true`",
+            " to `false` and vice versa."
+          ],
+          "label": "set",
+          "mutates": true,
+          "payable": false,
+          "returnType": null,
+          "selector": "0xe8c45eb6"
+        },
+        {
+          "args": [],
+          "docs": [
+            " Simply returns the current value of our `bool`."
+          ],
+          "label": "get_value",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "u32"
+            ],
+            "type": 0
+          },
+          "selector": "0xca6f2170"
+        },
+        {
+          "args": [],
+          "docs": [
+            " Simply returns the current value of our `bool`."
+          ],
+          "label": "get_alert",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "bool"
+            ],
+            "type": 1
+          },
+          "selector": "0xe10624bf"
+        },
+        {
+          "args": [],
+          "docs": [
+            " Simply returns the current value of our `bool`."
+          ],
+          "label": "get_alert_count",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "u64"
+            ],
+            "type": 2
+          },
+          "selector": "0x92754cdc"
+        }
+      ]
+    },
+    "storage": {
+      "struct": {
+        "fields": [
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "ty": 0
+              }
+            },
+            "name": "value"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0100000000000000000000000000000000000000000000000000000000000000",
+                "ty": 1
+              }
+            },
+            "name": "alert"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0200000000000000000000000000000000000000000000000000000000000000",
+                "ty": 2
+              }
+            },
+            "name": "alert_count"
+          }
+        ]
+      }
+    },
+    "types": [
+      {
+        "id": 0,
+        "type": {
+          "def": {
+            "primitive": "u32"
+          }
+        }
+      },
+      {
+        "id": 1,
+        "type": {
+          "def": {
+            "primitive": "bool"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "type": {
+          "def": {
+            "primitive": "u64"
+          }
+        }
+      }
+    ]
+  }
+}

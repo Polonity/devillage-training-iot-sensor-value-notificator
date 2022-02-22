@@ -1,0 +1,21 @@
+<!doctype html>
+<title>My Application</title>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+
+<form action="/contract" method="POST">
+    {{contract_status}}<input type="text" name="contract_address" maxlength="48" size=48 placeholder="your contract address" value="{{contract_address}}" required>
+    <input type="submit" value="submit">
+</form>
+<form action="/" method="POST">
+    🌡️<input type="number" name="value" placeholder="1 ~ 4294967295" min="1" max="4294967295" required>
+    <input type="submit" value="🆙">
+</form>

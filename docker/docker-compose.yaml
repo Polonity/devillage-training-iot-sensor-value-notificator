@@ -1,0 +1,18 @@
+version: '3'
+services:
+  astar-collator-dev:
+    build: ./astar-collator-dev
+    ports:
+     - "30333:30333"
+     - "9944:9944"
+     - "9933:9933"
+  
+  iot-device-solidity-mock:
+    build: ./iot-device-solidity-mock
+    ports:
+     - "8090:8090"
+
+  iot-device-wasm-mock:
+    build: ./iot-device-wasm-mock
+    ports:
+     - "9090:9090"

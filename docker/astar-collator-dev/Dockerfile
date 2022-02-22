@@ -1,0 +1,11 @@
+FROM ubuntu:20.04
+
+LABEL maintainer="polonity <hiken.pc@gmail.com>"
+
+RUN apt update
+RUN apt install -y \
+wget
+
+RUN wget -O - https://github.com/PlasmNetwork/Plasm/releases/download/v3.8.0/astar-collator-3.8.0-ubuntu-x86_64.tar.gz | tar xzf - 
+
+CMD ["./astar-collator", "--tmp", "--port", "30333" ,"--ws-port", "9944", "--rpc-port", "9933", "--rpc-cors", "all", "--alice", "--dev", "--unsafe-ws-external",  "--unsafe-rpc-external"]

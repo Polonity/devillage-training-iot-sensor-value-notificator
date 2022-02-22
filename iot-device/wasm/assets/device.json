@@ -1,0 +1,17 @@
+{
+    "contract":{
+        "metadata_json_file_path": "./assets/sensor_diag.json",
+        "address" : "aXqEAc6VsUqfEue5ExRyPGGLoTb5vc92asDpLFcfrCdkN5u",
+        "executor_wallet_mnemonic" : "//Alice",
+        "method": {
+            "get_alert": {
+                "name": "get_alert",
+                "args": {}    
+            },
+            "set": {
+                "name": "set",
+                "args": {"value":0}
+            }
+        }
+    }
+}

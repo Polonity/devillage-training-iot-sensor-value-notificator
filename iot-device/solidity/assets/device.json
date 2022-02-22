@@ -1,0 +1,9 @@
+{
+    "nodeAddress": "localhost",
+    "publicKey": "metamask_public_key",
+    "privateKey": "metamask_private_key",
+    "contract":{
+        "metadata_json_file_path": "./assets/sensor_diag_abi.json",
+        "address" : "your_contract_address"
+    }
+}

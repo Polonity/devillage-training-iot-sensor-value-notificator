@@ -1,0 +1,6 @@
+{
+    "types": {
+        "Address": "MultiAddress",
+        "LookupSource": "MultiAddress"
+    }
+}
