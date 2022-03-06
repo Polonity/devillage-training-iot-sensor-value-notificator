@@ -2,11 +2,11 @@
 
 ---
 
-**devillage 4回目 IoT活用したスマートコントラクト**
-**「センサー値をスマートコントラクトで監視してブロックチェーン上に刻む**
+**devillage 5回目 IoT活用したスマートコントラクト**  
+**「センサー値をスマートコントラクトで監視してブロックチェーン上に刻む**  
 **閾値超えたらアラートを出す」** 用に用意したリポジトリです。
 
-最初 wasm ベースで仕上げて、途中から solidity ベースを加えたので、
+最初 wasm ベースで仕上げて、途中から solidity ベースを加えたので、  
 ぐちゃっとしています。。。
 
 ## ～リポジトリのお品書き～
@@ -54,13 +54,13 @@ flowchart LR
 
 #### astar-collator
 
-スマートコントラクトをデプロイするためのローカルノード。
+スマートコントラクトをデプロイするためのローカルノード。  
 iot device からアクセスするため、外部からのアクセスを許可している。
 
 #### iot-device-mock
 
-センサ値を astar-collator にデプロイしたスマートコントラクトに
-通知する iot デバイスを模擬したもの。
+センサ値を astar-collator にデプロイしたスマートコントラクトに  
+通知する iot デバイスを模擬したもの。  
 form からの入力値をセンサ値としてスマートコントラクトを呼び出す。
 
 ### 起動
@@ -85,9 +85,9 @@ docker-compose down
 
 ### 事前準備
 
-使用する metamask アカウントの public key と private key を
-以下の場所に設定する。
-※使い捨て推奨
+使用する metamask アカウントの public key と private key を  
+以下の場所に設定する。  
+※使い捨て推奨  
 ※ 本当は Alice を使いたい。。。
 
 ./dcoker/iot-device-solidity-mock/app.py
@@ -102,7 +102,7 @@ args["privateKey"] = "metamask private key"
 
 #### Solidity編(Remix経由)
 
-以下の記事を参考してやってみる。
+以下の記事を参考してやってみる。  
 以下の場所の smart_contract/solidity/sensor_diag.sol を使う。
 
 https://zenn.dev/polonity/articles/72d51231165905#smart-contract-%E3%82%92%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B
@@ -111,15 +111,15 @@ https://zenn.dev/polonity/articles/72d51231165905#smart-contract-%E3%82%92%E3%83
 
 ![picture 1](images/15cae7848f8aba9af3f77f6d52787af0256312d2cc675e70abbfef3915d531fe.png)  
 
-今回使用する スマートコントラクトの ABI をいただいておく。
+今回使用する スマートコントラクトの ABI をいただいておく。  
 赤枠を押下。
 
 ![picture 3](images/fa5154544f4d0118010483213a2184bd9c2afc6bf709a56af96be47d903c2d0e.png)  
 
 コピーした内容で以下のファイルを書き換える。
 
-./iot-device/solidity/assets/sensor_diag_abi.json
-./docker/iot-device-solidity-mock/assets/sensor_diag_abi.json
+- ./iot-device/solidity/assets/sensor_diag_abi.json  
+- ./docker/iot-device-solidity-mock/assets/sensor_diag_abi.json
 
 
 #### WASM 編
@@ -142,7 +142,7 @@ cargo +nightly contract build
   - metadata.json (the contract's metadata)
 ```
 
-今回使用するのは、 sensor_diag.contract と metadata.json 。
+今回使用するのは、 sensor_diag.contract と metadata.json 。  
 
 metadata.json を以下のフォルダに配置する。わかりやすく rename しておく。
 
@@ -234,17 +234,17 @@ metadata.json を以下のフォルダに配置する。わかりやすく renam
 
 #### センサ値をスマートコントラクトに通知した結果を確認する
 
-polkadot.js.org 側の画面上の値も設定したセンサ値で更新されている。
+polkadot.js.org 側の画面上の値も設定したセンサ値で更新されている。  
 ![picture 18](images/98e32541a2f84eaa2bc254d7d527ccc57576a6792dbf729e8c686d6d9425c97b.png)  
 
-wasm の場合。solidity の場合はトランザクションの形式が異なる。
-ブロックチェーン上も実行したスマートコントラクトと引数の値が刻まれている。
+wasm の場合。solidity の場合はトランザクションの形式が異なる。  
+ブロックチェーン上も実行したスマートコントラクトと引数の値が刻まれている。  
 ![picture 20](images/148c8dd65504c54ca1a2bd006178f36d10faea8dfd67c9f1f5a409de20c09298.png)  
 
-　上位32bit が スマートコントラクトを呼び出す際のselector で、
-それ以降が args(u32: little endian) の値になっている。
-selector： 0xe8c45eb6 
-args　　： 0b000000
+　上位32bit が スマートコントラクトを呼び出す際のselector で、  
+それ以降が args(u32: little endian) の値になっている。  
+selector： 0xe8c45eb6  
+args　　： 0b000000  
 
 現場からは以上です。
 
@@ -278,7 +278,7 @@ args　　： 0b000000
       "privateKey": "metamask private key",
    ```
 
-満を持して、以下のコマンドでセンサ値を投げる(真似をする)。
+満を持して、以下のコマンドでセンサ値を投げる(真似をする)。  
 
 ```shell
 cd ./iot-device
